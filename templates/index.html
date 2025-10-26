@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>写真专辑下载器</title>
+
+    <!-- lightGallery CSS from CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-thumbnail.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- 1. 引入 Zoom 插件的 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-zoom.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href=".../lg-zoom.min.css" ... />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>写真专辑下载器</h1>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="输入关键词或网址...">
+            <button id="searchBtn">搜索</button>
+        </div>
+
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="button-group">
+                    <button id="downloadSelectedBtn">下载选中</button>
+                    <button id="downloadAllBtn">下载全部</button>
+                    <button id="cancelBtn">取消下载</button>
+                </div>
+                <div class="table-container">
+                    <table id="resultsTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>主标题</th>
+                                <th>分类</th>
+                                <th>数量</th>
+                                <th>作者</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 搜索结果将动态插入这里 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="right-panel">
+                <h3>预览</h3>
+                <div id="previewBox">
+                    <img id="previewImage" src="" alt="选中项缩略图">
+                </div>
+                <a id="onlineLink" href="#" target="_blank">在线浏览</a>
+                <button id="showThumbnailsBtn">查看图集缩略图</button>
+            </div>
+        </div>
+
+        <div class="progress-section">
+            <span id="albumLabel">状态: 空闲</span>
+            <div class="progress-bar-container">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+            <span id="progressText">0%</span>
+        </div>
+    </div>
+
+    <!-- 2. 恢复并优化模态框 HTML 结构 -->
+    <div id="thumbnailModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">缩略图预览</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body" id="thumbnailGrid">
+                <!-- 缩略图将动态插入这里 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 引入 lightGallery JS from CDN (在 script.js 之前) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/thumbnail/lg-thumbnail.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src=".../lg-zoom.min.js" ... ></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

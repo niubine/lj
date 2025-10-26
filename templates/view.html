@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    <!-- 1. 引入 lightGallery CSS from CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-thumbnail.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='viewer.css') }}">
+</head>
+<body>
+    <div class="viewer-container">
+        <!-- 顶部信息栏 -->
+        <div class="top-bar">
+            <a href="/" class="back-link">&larr; 返回主页</a>
+            <h1 class="album-title">{{ title }}</h1>
+            <span id="imageCounter"></span>
+        </div>
+
+        <!-- 大图显示区域 -->
+        <div class="main-image-wrapper" id="mainImageWrapper">
+             <!-- lightGallery 将会在这里动态生成内容，但我们可以放一个加载提示 -->
+             <div class="loader" id="loader">正在加载图片列表...</div>
+        </div>
+
+        <!-- 底部缩略图胶片 -->
+        <div class="thumbnail-strip-wrapper">
+            <div class="thumbnail-strip" id="thumbnailStrip">
+                <!-- 缩略图将动态插入这里 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 引入 lightGallery JS from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/thumbnail/lg-thumbnail.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="{{ url_for('static', filename='viewer.js') }}"></script>
+</body>
+</html>
